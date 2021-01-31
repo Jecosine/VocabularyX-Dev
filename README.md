@@ -1,2 +1,3 @@
 # VocabularyX
-Simple software to memorize word
+ 
+VacabularyX is a simple software to memorize word
