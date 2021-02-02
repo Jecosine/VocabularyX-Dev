@@ -14,9 +14,12 @@ Providing application interface to manage words.
 
 - Hide `Spellings` | `Meaning` | `Part of Speech`
 
-
 ## Words Contest
 
 - Similar words
 - Similar meanings
 - Similar Prefix
+
+## Development Note
+
+[HERE](docs/development-note.md)
