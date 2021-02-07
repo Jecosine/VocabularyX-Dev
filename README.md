@@ -23,3 +23,4 @@ Providing application interface to manage words.
 ## Development Note
 
 [HERE](docs/development-note.md)
+

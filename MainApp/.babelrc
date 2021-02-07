@@ -6,7 +6,8 @@
         ["env", {
           "targets": { "node": 7 }
         }],
-        "stage-0"
+        "stage-0",
+        ["es2015", {"modules": false } ]
       ]
     },
     "renderer": {
@@ -26,5 +27,14 @@
       ]
     }
   },
-  "plugins": ["transform-runtime"]
+  "plugins": [
+    "transform-runtime",
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
 }
