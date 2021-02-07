@@ -54,6 +54,7 @@ npm install --save-dev node-sass
 
 webpack.base.conf.js
 
+
 ```js
 test: /\.sass$/,
 loaders: ['style', 'css', 'sass']
