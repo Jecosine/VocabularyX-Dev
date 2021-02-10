@@ -1,9 +1,17 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-06 21:08:52
+ * @LastEditTime: 2021-02-10 08:41:24
  */
+
 import Vue from 'vue'
+
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+// import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import Router from 'vue-router'
 import {
   Button,
@@ -14,6 +22,11 @@ import {
   Main,
   Footer
 } from 'element-ui'
+
+library.add(fas, fab)
+dom.watch()
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(Router)
 Vue.use(Button)

@@ -1,12 +1,14 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-06 23:53:06
+ * @LastEditTime: 2021-02-10 09:44:06
 -->
 <template>
   <el-container id="main-container">
-    <el-header id="navigation-container" height="4rem">
-      <titlebar :title="title" :height="'2rem'" />
+    <el-header id="navigation-container" height="2.25rem">
+      <div class="navigation-wrapper">
+        <titlebar :title="title" :height="'2.25rem'" />
+      </div>
     </el-header>
     <el-main id="content-main"></el-main>
   </el-container>
@@ -37,7 +39,10 @@ export default {
   width: 100%;
   height: 2rem;
   padding: 0;
-  background-color: #114514;
+  background-color: #e7e7e7;
 }
-
+.navigation-wrapper {
+  width: calc(100% - 2.25rem);
+  padding: 0 1.125rem;
+}
 </style>

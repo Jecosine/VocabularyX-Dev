@@ -1,7 +1,7 @@
 '''
 Date: 2021-02-07 12:14:50
 LastEditors: Jecosine
-LastEditTime: 2021-02-07 13:41:04
+LastEditTime: 2021-02-09 09:37:57
 '''
 import requests
 import pickle
@@ -44,7 +44,7 @@ def save_words(libname):
 
 def get_words(libname, page):
     global words
-    res = requests.get(url.format(libname, None))
+    res = requests.get(url.format(libname, page))
     html = res.text
     bsobj = bs(html, 'html.parser')
     wordsobj = list(bsobj.find('div', {'class': 'panel-body'}).findAll('a'))
@@ -52,7 +52,9 @@ def get_words(libname, page):
     for a in wordsobj:
         words.append(a.get_text().strip())
 
-for i in available_notebook:
-    get_lib(i)
-    s = input()
+# for i in available_notebook:
+#     get_lib(i)
+#     s = input()
     
+
+

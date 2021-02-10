@@ -56,7 +56,7 @@
 npm i element-ui -S
 ```
 
-### Babel Import
+#### Babel Import
 
 ```bash
 npm install babel-plugin-component -D
@@ -71,7 +71,7 @@ Vue.use(Button)
 Vue.use(Select)
 ```
 
-### Multi-theme
+#### Multi-theme
 
 Install sass
 
@@ -93,4 +93,23 @@ Install element ui theme tools
 ```bash
 npm i element-theme -g
 npm i element-theme-chalk -D
+```
+
+
+### Font Awesome
+
+```bash
+cnpm install --save @fortawesome/fontawesome
+npm install --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/vue-fontawesome
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/free-brands-svg-icons
+
+```
+
+main.js
+
+```javascript
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 ```
