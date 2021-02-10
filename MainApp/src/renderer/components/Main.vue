@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 14:49:47
+ * @LastEditTime: 2021-02-10 15:15:13
 -->
 <template>
   <el-container id="main-container">
@@ -15,9 +15,9 @@
         <div
           :class="{
             'menu-button': true,
-            'menu-button-selected': currentMenu === 'home'
+            'menu-button-selected': currentMenu === 'recent'
           }"
-          @click="openMenu('home')"
+          @click="openMenu('recent')"
         >
           <font-awesome-icon :icon="['fas', 'home']"></font-awesome-icon>
         </div>
@@ -49,13 +49,13 @@ export default {
   data () {
     return {
       title: 'VocabularyX',
-      currentMenu: 'home'
+      currentMenu: 'recent'
     }
   },
   methods: {
     openMenu (name) {
       if (this.currentMenu !== name) {
-        this.$router.push({ name: 'notebook' })
+        this.$router.push({ name: name })
         this.currentMenu = name
       }
     }

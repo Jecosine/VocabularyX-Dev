@@ -1,25 +1,39 @@
-# mainapp
+<!--
+ * @Date: 2021-02-03 06:34:40
+ * @LastEditors: Jecosine
+ * @LastEditTime: 2021-02-10 15:38:57
+-->
+# VocabularyX [绝赞开发中]
 
-> A simple software help memorizing words
+## 前言
 
-#### Build Setup
+**目前软件还在开发中**
 
-``` bash
-# install dependencies
-npm install
+## 介绍
 
-# serve with hot reload at localhost:9080
-npm run dev
+VocabularyX **将**是一款具备以下功能的英语单词辅助背诵软件
 
-# build electron application for production
-npm run build
+- 自定义词库
+- 通过单词库之间进行集合运算产生新的笔记本
+- 自动生成单词本的背诵计划任务
+- 自动生成单词的练习
+  - 句子填空
+  - 单词听写与默写
+  - 挑战模式（可多人？）
+- 统计学习记录
+- 可以通过呼出命令箱完成绝大部分的操作内容（狂喜
+- 您也许喜欢的界面布局
 
+## 支持的平台
 
-# lint all JS/Vue component files in `src/`
-npm run lint
+- Linux发行版 
+- Windows 7 以上
+- MacOS
+- 可部署版本 支持大部分主流的浏览器
 
-```
+## 用户手册
 
----
+你可以在软件中的Help界面看到一样的手册内容，当然也可以在这里先行确认
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[45a3e22](https://github.com/SimulatedGREG/electron-vue/tree/45a3e224e7bb8fc71909021ccfdcfec0f461f634) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+[点击此处跳转至用户手册]()
+

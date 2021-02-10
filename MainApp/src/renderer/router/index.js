@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 10:59:57
+ * @LastEditTime: 2021-02-10 15:16:14
  */
 
 import Vue from 'vue'
@@ -21,7 +21,9 @@ import {
   Header,
   Aside,
   Main,
-  Footer
+  Footer,
+  Row,
+  Col
 } from 'element-ui'
 
 library.add(fas, fab, far)
@@ -37,6 +39,8 @@ Vue.use(Aside)
 Vue.use(Main)
 Vue.use(Header)
 Vue.use(Footer)
+Vue.use(Row)
+Vue.use(Col)
 export default new Router({
   routes: [
     {
@@ -47,6 +51,14 @@ export default new Router({
         id: 0
       },
       children: [
+        {
+          path: '/recent',
+          name: 'recent',
+          meta: {
+
+          },
+          component: resolve => { require(['@/components/Recent'], resolve) }
+        },
         {
           path: '/notebook',
           name: 'notebook',
