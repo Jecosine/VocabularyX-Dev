@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 15:15:13
+ * @LastEditTime: 2021-02-10 15:43:58
 -->
 <template>
   <el-container id="main-container">
@@ -91,7 +91,7 @@ export default {
 .menu-button {
   box-sizing: content-box;
   /* padding: 0 0.1rem; */
-  width: 4.25rem;
+  width: 4.15rem;
   height: 4.25rem;
   text-align: center;
   border-width: 0 0 0 0.1rem;

@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 15:16:14
+ * @LastEditTime: 2021-02-10 16:34:33
  */
 
 import Vue from 'vue'
@@ -23,7 +23,9 @@ import {
   Main,
   Footer,
   Row,
-  Col
+  Col,
+  Card,
+  Progress
 } from 'element-ui'
 
 library.add(fas, fab, far)
@@ -33,6 +35,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(Router)
 Vue.use(Button)
+Vue.use(Progress)
 Vue.use(Select)
 Vue.use(Container)
 Vue.use(Aside)
@@ -41,6 +44,7 @@ Vue.use(Header)
 Vue.use(Footer)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Card)
 export default new Router({
   routes: [
     {
