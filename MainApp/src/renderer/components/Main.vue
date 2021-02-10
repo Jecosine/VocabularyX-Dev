@@ -1,13 +1,16 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 15:43:58
+ * @LastEditTime: 2021-02-10 17:15:59
 -->
 <template>
   <el-container id="main-container">
     <el-header id="navigation-container" height="2.25rem">
       <div class="navigation-wrapper">
         <titlebar :title="title" :height="'2.25rem'" />
+      </div>
+      <div id="command">
+        
       </div>
     </el-header>
     <el-container>

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-10 15:06:46
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 17:09:12
+ * @LastEditTime: 2021-02-10 17:11:01
 -->
 <template>
   <el-container>
@@ -116,6 +116,10 @@ export default {
 <style scoped>
 @import '../theme/base.css';
 
+* {
+  user-select: none;
+}
+
 #recent-header {
   height: 4rem;
   font-size: 3rem;
@@ -154,6 +158,7 @@ export default {
 .recent-note-card {
   position: relative;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 .progress-circle-container {
 }
