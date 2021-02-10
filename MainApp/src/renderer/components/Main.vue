@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 13:12:44
+ * @LastEditTime: 2021-02-10 14:49:47
 -->
 <template>
   <el-container id="main-container">
@@ -56,6 +56,7 @@ export default {
     openMenu (name) {
       if (this.currentMenu !== name) {
         this.$router.push({ name: 'notebook' })
+        this.currentMenu = name
       }
     }
   }
@@ -88,18 +89,22 @@ export default {
   background-color: #e7e7e7;
 }
 .menu-button {
-  box-sizing: border-box;
+  box-sizing: content-box;
   /* padding: 0 0.1rem; */
+  width: 4.25rem;
   height: 4.25rem;
   text-align: center;
+  border-width: 0 0 0 0.1rem;
+  border-style: solid;
+  border-color: transparent;
   line-height: 4.25rem;
   font-size: 2rem;
   color: var(--color-menu-unselected);
 }
 .menu-button-selected {
-  box-sizing: border-box;
-  border-width: 0 0 0 0.1rem;
+  box-sizing: content-box;
   border-color: #e7e7e7;
+  border-width: 0 0 0 0.1rem;
   border-style: solid;
   color: var(--color-menu-selected);
 }
