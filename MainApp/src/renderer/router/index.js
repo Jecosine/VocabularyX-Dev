@@ -1,12 +1,13 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 08:41:24
+ * @LastEditTime: 2021-02-10 10:59:57
  */
 
 import Vue from 'vue'
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { far } from '@fortawesome/free-regular-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 // import { faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -23,7 +24,7 @@ import {
   Footer
 } from 'element-ui'
 
-library.add(fas, fab)
+library.add(fas, fab, far)
 dom.watch()
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -41,7 +42,7 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      component: require('@/components/Main').default,
+      component: resolve => { require(['@/components/Main'], resolve) },
       meta: {
         id: 0
       },
@@ -52,7 +53,7 @@ export default new Router({
           meta: {
             id: 1
           },
-          component: require('@/components/Notebook').default
+          component: resolve => { require(['@/components/Notebook'], resolve) }
         }
       ]
     }
