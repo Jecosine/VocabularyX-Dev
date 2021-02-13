@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 16:34:33
+ * @LastEditTime: 2021-02-11 10:10:33
  */
 
 import Vue from 'vue'
@@ -25,7 +25,8 @@ import {
   Row,
   Col,
   Card,
-  Progress
+  Progress,
+  Input
 } from 'element-ui'
 
 library.add(fas, fab, far)
@@ -33,6 +34,7 @@ dom.watch()
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+Vue.use(Input)
 Vue.use(Router)
 Vue.use(Button)
 Vue.use(Progress)

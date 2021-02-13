@@ -4,6 +4,21 @@
   font-family: 'Noto Sans SC';
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+#command-input.el-input__inner {
+  border-radius: 0!important;
+  font-family: 'Fira Code';
+}
+#main-search-bar {
+  border-radius: 0;
+  border-width: 0.2rem;
+  border-color: var(--color-primary-secondary);
+}
+#main-search-bar.el-input__inner {
+  height: 4rem!important;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: Palatino;
+}
 
 :root {
   --color-text-primary: #303133;

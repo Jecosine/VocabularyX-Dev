@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 17:15:59
+ * @LastEditTime: 2021-02-13 11:26:34
 -->
 <template>
   <el-container id="main-container">
@@ -9,8 +9,12 @@
       <div class="navigation-wrapper">
         <titlebar :title="title" :height="'2.25rem'" />
       </div>
-      <div id="command">
-        
+      <div id="command-container" v-show="false">
+        <div id="command-wrapper">
+          <div id="command-box">
+            <el-input id="command-input" style="fontFamily:'Fira Code'" v-model="command"></el-input>
+          </div>
+        </div>
       </div>
     </el-header>
     <el-container>
@@ -33,6 +37,15 @@
         >
           <font-awesome-icon :icon="['fas', 'atlas']"></font-awesome-icon>
         </div>
+        <div
+          :class="{
+            'menu-button': true,
+            'menu-button-selected': currentMenu === 'search'
+          }"
+          @click="openMenu('search')"
+        >
+          <font-awesome-icon :icon="['fas', 'search']"></font-awesome-icon>
+        </div>
       </el-aside>
       <el-container>
         <el-main id="content-main">
@@ -52,7 +65,8 @@ export default {
   data () {
     return {
       title: 'VocabularyX',
-      currentMenu: 'recent'
+      currentMenu: 'recent',
+      command: ''
     }
   },
   methods: {
@@ -74,6 +88,7 @@ export default {
   width: 100vw;
   height: 100vh;
 }
+
 #navigation-container {
   width: 100%;
   height: 2rem;
@@ -83,10 +98,41 @@ export default {
 #side-container {
   /* height: calc(100vh - 2rem); */
   background-color: var(--color-primary);
+  position:relative;
+}
+#command-container {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3.2rem;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+#command-wrapper {
+  box-sizing: content-box;
+
+  padding: 0.1rem 0.5rem;
+  width: 33%;
+  height: 3.2rem;
+  background-color: #e7e7e7;
+  box-shadow: 0 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.16);
+  line-height: 100%;
+}
+#command-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#command-input.el-input__inner {
+  font-family: 'Fira Code';
 }
 .navigation-wrapper {
   width: calc(100% - 2.25rem);
-  padding: 0 1.125rem;
+  padding: 0 1.125rem;  
 }
 #footer-container {
   background-color: #e7e7e7;
@@ -107,8 +153,7 @@ export default {
 .menu-button-selected {
   box-sizing: content-box;
   border-color: #e7e7e7;
-  border-width: 0 0 0 0.1rem;
-  border-style: solid;
   color: var(--color-menu-selected);
+  transition: none;
 }
 </style>
