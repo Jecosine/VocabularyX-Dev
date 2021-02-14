@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-11 10:10:33
+ * @LastEditTime: 2021-02-14 12:14:50
  */
 
 import Vue from 'vue'
@@ -12,8 +12,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 // import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
 import Router from 'vue-router'
+import { shortcut } from '../plugins/shortcut'
 import {
   Button,
   Select,
@@ -33,7 +33,13 @@ library.add(fas, fab, far)
 dom.watch()
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
+shortcut.filter = function (event) {
+  var tagName = (event.target || event.srcElement).tagName
+  console.log(tagName + '???')
+  return true
+}
+Vue.prototype.$shortcut = shortcut
+window.Vue = Vue
 Vue.use(Input)
 Vue.use(Router)
 Vue.use(Button)

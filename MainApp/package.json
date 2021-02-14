@@ -62,6 +62,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "axios": "^0.18.0",
     "element-ui": "^2.15.0",
+    "keymaster": "^1.6.2",
     "sqlite3": "^5.0.1",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",

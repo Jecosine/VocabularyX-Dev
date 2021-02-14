@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-13 11:26:34
+ * @LastEditTime: 2021-02-14 12:33:50
 -->
 <template>
   <el-container id="main-container">
@@ -9,10 +9,10 @@
       <div class="navigation-wrapper">
         <titlebar :title="title" :height="'2.25rem'" />
       </div>
-      <div id="command-container" v-show="false">
-        <div id="command-wrapper">
+      <div id="command-container">
+        <div id="command-wrapper" v-show="showCommand">
           <div id="command-box">
-            <el-input id="command-input" style="fontFamily:'Fira Code'" v-model="command"></el-input>
+            <el-input id="command-input" ref="searchBarRef" style="fontFamily:'Fira Code'" v-model="command" @keydown.27.native="triggerCommand"></el-input>
           </div>
         </div>
       </div>
@@ -66,16 +66,40 @@ export default {
     return {
       title: 'VocabularyX',
       currentMenu: 'recent',
-      command: ''
+      command: '',
+      showCommand: false
     }
   },
   methods: {
+    triggerCommand () {
+      this.showCommand = !this.showCommand
+      if (this.showCommand) {
+        this.$nextTick(function () {
+          this.command = ''
+          this.$refs.searchBarRef.focus()
+        })
+      }
+      console.log('test')
+    },
     openMenu (name) {
       if (this.currentMenu !== name) {
         this.$router.push({ name: name })
         this.currentMenu = name
       }
     }
+  },
+  mounted () {
+    // const that = this
+    this.$shortcut.setScope('all')
+
+    this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
+    this.$shortcut.bind('esc', this.triggerCommand)
+
+    // this.$shortcut.filter = function (event) {
+    //   var tagName = (event.target || event.srcElement).tagName
+    //   console.log(tagName)
+    //   return true
+    // }
   }
 }
 </script>

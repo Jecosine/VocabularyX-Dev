@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-10 15:06:46
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-14 02:35:06
+ * @LastEditTime: 2021-02-14 02:51:43
 -->
 <template>
   <el-container>
@@ -19,7 +19,7 @@
     </el-header>
     <el-main id="main">
       <el-row class="main-row" :gutter="80">
-        <el-col :xl="14" :lg="12" :md="10" :sm="24" :xs="24">
+        <el-col :xl="12" :lg="10" :md="8" :sm="24" :xs="24">
           <div id="shortcut-operation" class="main-col">
             <div class="col-title">Start</div>
             <div class="link-group">
@@ -29,7 +29,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :xl="10" :lg="12" :md="14" :sm="24" :xs="24">
+        <el-col :xl="12" :lg="14" :md="16" :sm="24" :xs="24">
           <div id="recent-notebook" class="main-col">
             <div class="col-title">Recent</div>
             <el-card
@@ -157,6 +157,7 @@ export default {
     }
   },
   methods: {
+
     getPercentage (a, b) {
       return b === 0 ? 0 : (a / b).toFixed(2) * 100
     },
@@ -167,6 +168,7 @@ export default {
   created () {
     // get recent notebook data
     // ...
+    this.showCommand = true
   },
   mounted () {
     const that = this

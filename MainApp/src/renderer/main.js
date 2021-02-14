@@ -1,3 +1,8 @@
+/*
+ * @Date: 2021-02-03 06:34:40
+ * @LastEditors: Jecosine
+ * @LastEditTime: 2021-02-14 12:02:12
+ */
 import Vue from 'vue'
 import axios from 'axios'
 
