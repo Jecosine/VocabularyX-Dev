@@ -1,3 +1,8 @@
+/*
+ * @Date: 2021-02-03 06:34:40
+ * @LastEditors: Jecosine
+ * @LastEditTime: 2021-02-16 01:54:58
+ */
 'use strict'
 
 import { app, BrowserWindow } from 'electron'
@@ -22,7 +27,11 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true
+    }
   })
 
   mainWindow.loadURL(winURL)
