@@ -1,4 +1,7 @@
-* {
+div,
+html,
+body,
+main {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans SC';
@@ -19,7 +22,11 @@
   font-weight: bold;
   font-family: Palatino;
 }
-
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 0.2rem;
+}
 :root {
   --color-text-primary: #303133;
   --color-text-regular: #606266;
@@ -31,3 +38,10 @@
   font-size: 16px;
 
 }
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+/* .word-source {
+  font-family: 'Palatino Linotype';
+} */
