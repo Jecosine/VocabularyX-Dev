@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-15 09:24:52
+ * @LastEditTime: 2021-02-15 13:05:30
 -->
 <template>
   <el-container id="main-container">
@@ -42,7 +42,7 @@
             'menu-button': true,
             'menu-button-selected': currentMenu === 'search'
           }"
-          @click="openMenu('search')"
+          @click="openMenu('recent')"
         >
           <font-awesome-icon :icon="['fas', 'search']"></font-awesome-icon>
         </div>
@@ -58,7 +58,9 @@
       </el-aside>
       <el-container>
         <el-main id="content-main">
-          <router-view />
+          <transition name="fade">
+            <router-view />
+          </transition>
         </el-main>
         <el-footer id="footer-container" height="1.125rem"></el-footer>
       </el-container>
@@ -88,6 +90,9 @@ export default {
           this.$refs.searchBarRef.focus()
         })
       }
+    },
+    executeCommand () {
+      this.$commandBox.execute(this.command)
     },
     openMenu (name) {
       if (this.currentMenu !== name) {
@@ -133,7 +138,7 @@ export default {
   background-color: transparent;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
 }
 #command-wrapper {
   box-sizing: content-box;
@@ -144,6 +149,7 @@ export default {
   background-color: #e7e7e7;
   box-shadow: 0 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.16);
   line-height: 100%;
+  z-index: 9999;
 }
 #command-box {
   display: flex;

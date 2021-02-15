@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2021-02-11 11:20:04
+ * @LastEditors: Jecosine
+ * @LastEditTime: 2021-02-15 13:50:18
+-->
 # 快捷呼出命令支持
 
 ## 前言
@@ -15,7 +20,7 @@
 #### 语法
 
 ```
-/route <page-url>[:[options]]
+/route -p <page-url> [options]
 ```
 
 #### 样例 
@@ -23,13 +28,13 @@
 跳转到笔记本页
 
 ```
-/route notebook
+/route -p notebook
 ```
 
 跳转到特定笔记本
 
 ```
-/route notebook/<notebook-name>
+/route -p notebook/<notebook-name>
 ```
 ### 页面名称汇总
 

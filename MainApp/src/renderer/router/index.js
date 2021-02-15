@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-15 10:21:37
+ * @LastEditTime: 2021-02-15 17:30:58
  */
 
 import Vue from 'vue'
@@ -14,6 +14,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Router from 'vue-router'
 import { shortcut } from '../plugins/shortcut'
+import { sequelize } from '../db'
 import {
   Button,
   Select,
@@ -36,6 +37,7 @@ dom.watch()
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.prototype.$shortcut = shortcut
+Vue.prototype.$db = sequelize
 window.Vue = Vue
 Vue.use(Tag)
 Vue.use(Divider)

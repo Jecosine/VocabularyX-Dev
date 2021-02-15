@@ -60,10 +60,12 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/vue-fontawesome": "^2.0.2",
+    "@mapbox/node-pre-gyp": "^1.0.0",
     "axios": "^0.18.0",
     "element-ui": "^2.15.0",
     "keymaster": "^1.6.2",
-    "sqlite3": "^5.0.1",
+    "sequelize": "^6.5.0",
+    "sqlite3": "5.0.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
@@ -71,6 +73,7 @@
     "vuex-electron": "^1.0.0"
   },
   "devDependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.0",
     "ajv": "^6.5.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
