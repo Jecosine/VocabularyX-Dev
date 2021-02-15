@@ -1,14 +1,16 @@
 div,
 html,
 body,
-main {
+main,
+ul,
+ol {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans SC';
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 #command-input.el-input__inner {
-  border-radius: 0!important;
+  border-radius: 0 !important;
   font-family: 'Fira Code';
 }
 #main-search-bar {
@@ -17,7 +19,7 @@ main {
   border-color: var(--color-primary-secondary);
 }
 #main-search-bar.el-input__inner {
-  height: 4rem!important;
+  height: 4rem !important;
   font-size: 1.3rem;
   font-weight: bold;
   font-family: Palatino;
@@ -42,6 +44,49 @@ a {
   text-decoration: none;
   color: var(--color-primary);
 }
+a.crossreference {
+  font-weight: 900;
+}
+.word-source p {
+  box-sizing: content-box;
+  padding: 1rem;
+  /* border: solid 0.2rem rgba(0, 0, 0, 0.1); */
+  border-radius: 0.2rem;
+  background-color: #eff6fc;
+}
+.word-source blockquote {
+  box-sizing: content-box;
+  padding: 1rem 1rem 1rem 2rem;
+  background-color: #e7f0f8;
+  border-color: var(--color-primary);
+  border-width: 0 0 0 1rem;
+  border-style: solid;
+  border-radius: 0.2rem;
+  margin: 0;
+}
 /* .word-source {
   font-family: 'Palatino Linotype';
 } */
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 0.6rem;
+  background-color: var(--color-primary-secondary);
+  transition: all 0.2s;
+  /* border-radius: 0.1rem; */
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary);
+  /* border-radius: 0.1rem; */
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
