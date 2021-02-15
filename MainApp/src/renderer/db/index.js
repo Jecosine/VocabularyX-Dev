@@ -1,10 +1,10 @@
 /*
  * @Date: 2021-02-15 13:53:45
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-15 15:47:49
+ * @LastEditTime: 2021-02-16 02:41:35
  */
 const path = require('path')
-const { Sequelize, DataTypes } = require('sequelize')
+const { Sequelize } = require('sequelize')
 const { UserModel, NotebookModel, WordModel } = require('../models')
 // create connection
 
@@ -15,36 +15,49 @@ const sequelize = new Sequelize(undefined, undefined, undefined, {
 })
 console.log(`in db.js, dirname: ${__dirname}`)
 const User = sequelize.define('User', UserModel, {
-  tableName: 'user'
+  tableName: 'user',
+  timestamps: false
 })
 const Word = sequelize.define('Word', WordModel, {
-  tableName: 'word'
+  tableName: 'word',
+  timestamps: false
 })
 const Notebook = sequelize.define('Notebook', NotebookModel, {
-  tableName: 'notebook'
+  tableName: 'notebook',
+  timestamps: false
 })
-const WordNotebook = sequelize.define('WordNotebook', {
-  id: DataTypes.TEXT,
-  wordId: {
-    type: DataTypes.TEXT,
-    references: {
-      model: 'Word',
-      key: 'id'
-    }
-  },
-  notebookId: {
-    type: DataTypes.TEXT,
-    references: {
-      model: 'Notebook',
-      key: 'id'
-    }
-  }
-})
+// const WordNotebook = sequelize.define('WordNotebook', {
+//   id: {
+//     type: DataTypes.TEXT,
+//     primaryKey: true
+//   },
+//   word_id: {
+//     type: DataTypes.TEXT,
+//     references: {
+//       model: Word,
+//       key: 'id'
+//     }
+//   },
+//   notebook_id: {
+//     type: DataTypes.TEXT,
+//     references: {
+//       model: Notebook,
+//       key: 'id'
+//     }
+//   }
+// }, {
+//   tableName: 'word_notebook',
+//   timestamps: false
+// })
 Notebook.belongsToMany(Word, {
-  through: WordNotebook
+  through: 'word_notebook',
+  timestamps: false,
+  foreignKey: 'notebook_id'
 })
 Word.belongsToMany(Notebook, {
-  through: WordNotebook
+  through: 'word_notebook',
+  timestamps: false,
+  foreignKey: 'word_id'
 })
 
 async function fc () {
