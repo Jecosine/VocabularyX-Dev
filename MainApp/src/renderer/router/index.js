@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-14 12:14:50
+ * @LastEditTime: 2021-02-15 10:21:37
  */
 
 import Vue from 'vue'
@@ -26,20 +26,19 @@ import {
   Col,
   Card,
   Progress,
-  Input
+  Input,
+  Divider,
+  Tag
 } from 'element-ui'
 
 library.add(fas, fab, far)
 dom.watch()
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-shortcut.filter = function (event) {
-  var tagName = (event.target || event.srcElement).tagName
-  console.log(tagName + '???')
-  return true
-}
 Vue.prototype.$shortcut = shortcut
 window.Vue = Vue
+Vue.use(Tag)
+Vue.use(Divider)
 Vue.use(Input)
 Vue.use(Router)
 Vue.use(Button)
@@ -78,6 +77,14 @@ export default new Router({
             id: 1
           },
           component: resolve => { require(['@/components/Notebook'], resolve) }
+        },
+        {
+          path: '/word',
+          name: 'word',
+          meta: {
+            id: 2
+          },
+          component: resolve => { require(['@/components/Word'], resolve) }
         }
       ]
     }

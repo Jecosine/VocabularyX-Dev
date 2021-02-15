@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-14 12:33:50
+ * @LastEditTime: 2021-02-15 09:24:52
 -->
 <template>
   <el-container id="main-container">
@@ -46,6 +46,15 @@
         >
           <font-awesome-icon :icon="['fas', 'search']"></font-awesome-icon>
         </div>
+        <div
+          :class="{
+            'menu-button': true,
+            'menu-button-selected': currentMenu === 'word'
+          }"
+          @click="openMenu('word')"
+        >
+          <font-awesome-icon :icon="['fas', 'font']"></font-awesome-icon>
+        </div>
       </el-aside>
       <el-container>
         <el-main id="content-main">
@@ -79,7 +88,6 @@ export default {
           this.$refs.searchBarRef.focus()
         })
       }
-      console.log('test')
     },
     openMenu (name) {
       if (this.currentMenu !== name) {
@@ -91,15 +99,8 @@ export default {
   mounted () {
     // const that = this
     this.$shortcut.setScope('all')
-
     this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
     this.$shortcut.bind('esc', this.triggerCommand)
-
-    // this.$shortcut.filter = function (event) {
-    //   var tagName = (event.target || event.srcElement).tagName
-    //   console.log(tagName)
-    //   return true
-    // }
   }
 }
 </script>
