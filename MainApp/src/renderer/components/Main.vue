@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 10:01:54
+ * @LastEditTime: 2021-02-16 10:41:35
 -->
 <template>
   <el-container id="main-container">
@@ -62,7 +62,7 @@
             <router-view />
           </transition>
         </el-main>
-        <el-footer id="footer-container" height="1.125rem"></el-footer>
+        <el-footer id="footer-container" height="2.125rem"></el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -130,6 +130,10 @@ export default {
   /* height: calc(100vh - 2rem); */
   background-color: var(--color-primary);
   position:relative;
+}
+#content-main {
+  padding: 0;
+  height: calc(100vh - 4.375rem);
 }
 #command-container {
   position: absolute;

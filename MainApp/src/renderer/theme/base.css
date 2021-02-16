@@ -70,7 +70,7 @@ a.crossreference {
 } */
 
 ::-webkit-scrollbar {
-  width: 0.6rem;
+  /* width: 0.6rem; */
   background-color: transparent;
 }
 
