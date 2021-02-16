@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-06 20:56:48
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 10:37:38
+ * @LastEditTime: 2021-02-16 10:47:09
 -->
 <template>
   <el-container>
@@ -24,7 +24,7 @@
     <el-main>
       <div id="notebook-list-container">
         <div
-          class="notebook-item-container"
+          :class="{'notebook-item-container-list': isListView, 'notebook-item-container-grid': !isListView}"
           v-for="(item, i) in notebookData"
           :key="i"
         ></div>
@@ -37,7 +37,8 @@
 export default {
   data () {
     return {
-      notebookData: []
+      notebookData: [],
+      isListView: true // load from database
     }
   },
   mounted () {},
@@ -65,7 +66,12 @@ export default {
   background-color: aliceblue;
   line-height: 2rem;
 }
+.notebook-item-container-list {
+  
+}
+.notebook-item-container-grid {
 
+}
 .toolbar-wrapper {
   float: right;
   width: 10rem;
