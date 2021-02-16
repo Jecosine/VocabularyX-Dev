@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 10:41:35
+ * @LastEditTime: 2021-02-16 13:17:24
 -->
 <template>
   <el-container id="main-container">
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { setTheme } from '../utils/index'
 export default {
   components: {
     titlebar: require('@/components/partial/Titlebar').default
@@ -106,6 +107,7 @@ export default {
     this.$shortcut.setScope('all')
     this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
     this.$shortcut.bind('esc', this.triggerCommand)
+    setTheme(document.body, 'theme-default')
   }
 }
 </script>

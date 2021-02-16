@@ -34,20 +34,12 @@ ol {
   --color-text-primary: #303133;
   --color-text-regular: #606266;
   --color-text-secondary: #909399;
-  /* --color-primary: #1F4767; */
-  /* --color-primary-secondary: #839db3; */
+  --color-primary: #1F4767;
+  --color-primary-secondary: #839db3;
   --color-menu-unselected: #a7a7a7;
   --color-menu-selected: #e7e7e7;
   font-size: 16px;
 
-}
-.theme-default {
-  --color-primary: #1F4767;
-  --color-primary-secondary: #839db3;
-}
-.theme-ff8623 {
-  --color-primary: #ff8623;
-  --color-primary-secondary: #f8e1ce;
 }
 a {
   text-decoration: none;
