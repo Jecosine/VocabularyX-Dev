@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-15 13:53:45
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 02:41:35
+ * @LastEditTime: 2021-02-16 09:35:12
  */
 const path = require('path')
 const { Sequelize } = require('sequelize')
@@ -14,10 +14,10 @@ const sequelize = new Sequelize(undefined, undefined, undefined, {
   storage: path.join(__dirname, './test.db')
 })
 console.log(`in db.js, dirname: ${__dirname}`)
-const User = sequelize.define('User', UserModel, {
-  tableName: 'user',
-  timestamps: false
-})
+// const User = sequelize.define('User', UserModel, {
+//   tableName: 'user',
+//   timestamps: false
+// })
 const Word = sequelize.define('Word', WordModel, {
   tableName: 'word',
   timestamps: false
@@ -59,15 +59,24 @@ Word.belongsToMany(Notebook, {
   timestamps: false,
   foreignKey: 'word_id'
 })
-
-async function fc () {
-  const test1 = await Word.findOne({
-    where: {
-      spell: 'abandon'
-    },
-    include: Notebook
-  })
-  console.log(test1)
-}
-fc()
-export default { sequelize, User, Word, Notebook }
+// User.belongsToMany(Notebook, {
+//   through: 'user_notebook',
+//   timestamps: false,
+//   foreignKey: 'user_id'
+// })
+// Notebook.belongsToMany(User, {
+//   through: 'user_notebook',
+//   timestamps: false,
+//   foreignKey: 'notebook_id'
+// })
+// async function fc () {
+//   const test1 = await Word.findOne({
+//     where: {
+//       spell: 'abandon'
+//     },
+//     include: Notebook
+//   })
+//   console.log(test1)
+// }
+// // fc()
+export default sequelize

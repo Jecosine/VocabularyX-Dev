@@ -25,6 +25,7 @@ ol {
   font-family: Palatino;
 }
 ::selection {
+  position: absolute;
   background-color: var(--color-primary);
   color: white;
   border-radius: 0.2rem;
@@ -74,7 +75,7 @@ a.crossreference {
 }
 
 ::-webkit-scrollbar-thumb {
-  width: 0.6rem;
+  /* width: 0.6rem; */
   background-color: var(--color-primary-secondary);
   transition: all 0.2s;
   /* border-radius: 0.1rem; */

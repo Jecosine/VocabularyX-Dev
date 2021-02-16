@@ -1,11 +1,11 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 01:54:58
+ * @LastEditTime: 2021-02-16 10:17:04
  */
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -31,13 +31,26 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true
-    }
+    },
+    frame: false
   })
 
   mainWindow.loadURL(winURL)
 
-  mainWindow.on('closed', () => {
+  ipcMain.on('closed', () => {
     mainWindow = null
+  })
+
+  ipcMain.on('min', (e) => {
+    mainWindow.minimize()
+  })
+
+  ipcMain.on('max', (e) => {
+    if (mainWindow.isMaximized()) {
+      mainWindow.unmaximize()
+    } else {
+      mainWindow.maximize()
+    }
   })
 }
 

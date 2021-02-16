@@ -1,3 +1,8 @@
+/*
+ * @Date: 2021-02-03 06:34:40
+ * @LastEditors: Jecosine
+ * @LastEditTime: 2021-02-16 09:25:54
+ */
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -21,6 +26,8 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // allow unused vars
+    'no-unused-vars': 'off'
   }
 }

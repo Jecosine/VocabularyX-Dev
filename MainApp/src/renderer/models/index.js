@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-15 14:19:19
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 02:17:13
+ * @LastEditTime: 2021-02-16 09:42:06
  */
 const {DataTypes} = require('sequelize')
 
@@ -23,8 +23,15 @@ const NotebookModel = {
     type: DataTypes.TEXT,
     primaryKey: true
   },
-  name: DataTypes.TEXT,
-  author: DataTypes.TEXT
+  name: {
+    type: DataTypes.TEXT
+  },
+  // author: {
+  //   type: DataTypes.TEXT
+  // },
+  count: {
+    type: DataTypes.INTEGER
+  }
 }
 const UserModel = {
   id: {

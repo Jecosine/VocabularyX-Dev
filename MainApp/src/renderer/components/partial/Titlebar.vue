@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-06 21:16:20
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-10 10:26:58
+ * @LastEditTime: 2021-02-16 10:16:18
 -->
 <template>
   <div id="title-container" :style="{'height': height, 'lineHeight': height}">
@@ -10,17 +10,17 @@
       <div class="title-self">{{ title }}</div>      
     </div>
     <div class="title-button-group" :style="{'height': height}">
-      <div id="button-minimize" class="window-button" :style="{'width': height, 'height': height}">
+      <div id="button-minimize" class="window-button" @click="minimize()" :style="{'width': height, 'height': height}">
         <!-- <font-awesome-icon :icon="['far','window-minimize']"></font-awesome-icon> -->
         <i class="el-icon-minus"></i>
 
       </div>
-      <div id="button-maximum" class="window-button" :style="{'width': height, 'height': height}">
+      <div id="button-maximum" class="window-button" @click="maximize()" :style="{'width': height, 'height': height}">
         <!-- <font-awesome-icon :icon="['far','square']"></font-awesome-icon> -->
         <i class="el-icon-upload2"></i>
 
       </div>
-      <div id="button-close" class="window-button" :style="{'width': height, 'height': height}">
+      <div id="button-close" class="window-button" @click="close()" :style="{'width': height, 'height': height}">
         <!-- <font-awesome-icon :icon="['fas','times']"></font-awesome-icon> -->
         <i class="el-icon-close"></i>
       </div>
@@ -29,12 +29,25 @@
 </template>
 
 <script>
+const { ipcRenderer } = require('electron')
 export default {
   name: 'title-bar',
   props: [
     'title',
     'height'
-  ]
+  ],
+  methods: {
+    minimize () {
+      console.log('???????')
+      ipcRenderer.send('min')
+    },
+    maximize () {
+      ipcRenderer.send('max')
+    },
+    close () {
+      ipcRenderer.send('close')
+    }
+  }
 }
 </script>
 
@@ -60,6 +73,7 @@ export default {
   display: flex;
   top: 0;
   right: -1.125rem;
+  -webkit-app-region: none;
 }
 .title-icon,
 .title-self {

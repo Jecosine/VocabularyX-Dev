@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-15 13:05:30
+ * @LastEditTime: 2021-02-16 10:01:54
 -->
 <template>
   <el-container id="main-container">
@@ -124,6 +124,7 @@ export default {
   height: 2rem;
   padding: 0;
   background-color: #e7e7e7;
+  -webkit-app-region: drag;
 }
 #side-container {
   /* height: calc(100vh - 2rem); */
