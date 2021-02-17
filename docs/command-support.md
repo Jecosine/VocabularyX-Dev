@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-11 11:20:04
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-15 13:50:18
+ * @LastEditTime: 2021-02-16 15:51:57
 -->
 # 快捷呼出命令支持
 
@@ -20,7 +20,7 @@
 #### 语法
 
 ```
-/route -p <page-url> [options]
+/route -p <page-url> -o [options]
 ```
 
 #### 样例 
@@ -52,4 +52,15 @@
 
 
 单词本相关命令
+
+
+## `setting`
+
+### 视图设置
+
+#### 设置主题
+
+```bash
+/set theme <theme-name>
+```
 
