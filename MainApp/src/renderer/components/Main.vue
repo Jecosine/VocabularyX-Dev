@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 11:20:52
+ * @LastEditTime: 2021-02-18 14:22:46
 -->
 <template>
   <el-container id="main-container">
@@ -12,7 +12,7 @@
       <div id="command-container">
         <div id="command-wrapper" v-show="showCommand">
           <div id="command-box">
-            <el-input id="command-input" ref="searchBarRef" style="fontFamily:'Fira Code'" v-model="command" @keydown.27.native="triggerCommand" @keydown.enter.native="executeCommand"></el-input>
+            <el-input id="command-input" ref="searchBarRef" style="fontFamily:'Fira Code'" v-model="command" @keydown.27.native="triggerCommand" @keydown.enter.native="executeCommand" @keydown.up.native="prevCommand" @keydown.down.native="nextCommand"></el-input>
           </div>
         </div>
       </div>
@@ -70,6 +70,8 @@
 
 <script>
 import { setTheme } from '../utils/index'
+import CommandParseException from '../exceptions/CommandParseException'
+import CommandExecuteException from '../exceptions/CommandExecuteException'
 
 export default {
   components: {
@@ -80,21 +82,64 @@ export default {
       title: 'VocabularyX',
       currentMenu: 'recent',
       command: '',
-      showCommand: false
+      showCommand: false,
+      commandHistory: [],
+      commandHistoryCursor: -1
     }
   },
   methods: {
+    prevCommand () {
+      // first time
+      if (this.commandHistoryCursor < 0) {
+        this.commandHistory.push(this.command)
+        this.commandHistoryCursor = this.commandHistory.length - 1
+      }
+      if (this.commandHistoryCursor) {
+        --this.commandHistoryCursor
+        this.command = this.commandHistory[this.commandHistoryCursor]
+      }
+    },
+    nextCommand () {
+      if (this.commandHistoryCursor >= 0 && this.commandHistoryCursor < this.commandHistory.length - 1) {
+        ++this.commandHistoryCursor
+        this.command = this.commandHistory[this.commandHistoryCursor]
+      }
+      // reach bottom
+      if (this.commandHistoryCursor === this.commandHistory.length - 1) {
+        this.commandHistory.pop(-1)
+        this.commandHistoryCursor = -1
+      }
+    },
     triggerCommand () {
       this.showCommand = !this.showCommand
       if (this.showCommand) {
         this.$nextTick(function () {
           this.command = ''
           this.$refs.searchBarRef.focus()
+          this.commandHistoryCursor = -1
         })
       }
     },
     executeCommand () {
-      this.$command.execute(this.command)
+      if (this.command.trim() !== '') {
+        this.commandHistory.push(this.command)
+      }
+      if (this.commandHistory > 10) {
+        this.commandHistory.shift()
+      }
+      let res = this.$command.execute(this.command)
+      if (res && res['status'] < 0) {
+        let title
+        if (res['msg'] && (res['msg'] instanceof Error)) {
+          title = `[${res['msg'].scope}] ${res['msg'].name}`
+          this.$notify({
+            title: title,
+            message: res['msg'].message,
+            position: 'bottom-right',
+            type: 'error'
+          })
+        }
+      }
       this.triggerCommand()
     },
     openMenu (name) {
@@ -106,6 +151,17 @@ export default {
     testFunction (options) {
       console.log('It works!')
       console.log(options)
+    },
+    routerCommand (options) {
+      // record current path
+      let current = this.$route
+      // check options
+      if (!options['opts'] && (options['opts']['path'] === undefined)) {
+        throw new CommandExecuteException(`'path' param not defined`)
+      }
+      if (current.path !== options['opts']['path']) {
+        this.$router.push(options['opts']['path'])
+      }
     }
   },
   mounted () {
@@ -115,7 +171,40 @@ export default {
     this.$shortcut.bind('esc', this.triggerCommand)
     // set default theme
     setTheme(document.body, 'theme-default')
-    this.$command.bind('test', this.testFunction)
+    this.$command.bind('test', this.testFunction, {
+      name: 'test',
+      opts: {
+        param1: {
+          name: 'param1',
+          type: 'string',
+          short: '-p1',
+          long: '--param1',
+          require: false
+        },
+        param2: {
+          name: 'param2',
+          type: 'boolean',
+          short: '-p2',
+          long: '--param2',
+          require: true
+        }
+      }
+    })
+    this.$command.bind('route', this.routerCommand, {
+      name: 'route',
+      opts: {
+        path: {
+          name: 'path',
+          type: 'string',
+          short: '-p',
+          long: '--path',
+          require: true
+        }
+      }
+    })
+  },
+  created () {
+    window.routeApp = this
   }
 }
 </script>

@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-17 17:10:09
+ * @LastEditTime: 2021-02-18 13:32:58
  */
 
 import Vue from 'vue'
@@ -31,7 +31,8 @@ import {
   Input,
   Divider,
   Tag,
-  ButtonGroup
+  ButtonGroup,
+  Notification
 } from 'element-ui'
 
 library.add(fas, fab, far)
@@ -41,7 +42,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.prototype.$shortcut = shortcut
 Vue.prototype.$db = sequelize
 Vue.prototype.$command = command
+Vue.prototype.$notify = Notification
 window.Vue = Vue
+
 Vue.use(ButtonGroup)
 Vue.use(Tag)
 Vue.use(Divider)

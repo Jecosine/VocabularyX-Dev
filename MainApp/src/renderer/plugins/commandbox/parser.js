@@ -1,21 +1,21 @@
 /*
  * @Date: 2021-02-15 13:33:14
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 11:19:41
+ * @LastEditTime: 2021-02-18 13:45:23
  */
 import CommandParseException from '../../exceptions/CommandParseException'
-// const {mapper} = require('mapper')
+
 const parser = {
   configuration: null,
-  parse: (raw) => {
+  parse: (raw, mapper) => {
     var commandData
     console.log('in parser')
-    console.log(`pasing command ${raw}`)
+    console.log(`parsing command ${raw}`)
     if (raw && (typeof (raw) === 'string')) {
       if (raw[0] === '/') {
-        commandData = parser.grammarCheck(raw)
+        commandData = parser.grammarCheck(raw, mapper)
       } else {
-        console.log(`Invalid command, Aborting...`)
+        throw new CommandParseException(`Invalid Command, aborting`)
       }
     }
     console.log('parsed')
@@ -29,7 +29,9 @@ const parser = {
   //   });
   // },
   checkParam (param) {
-    let opts = parser.configuration.opts
+    let opts = parser.configuration['opts']
+    console.log('in checkParam')
+    console.log(parser.configuration, parser.configuration['opts'])
     let keys = Object.keys(opts)
     for (let i = 0; i < keys.length; ++i) {
       let key = keys[i]
@@ -41,39 +43,44 @@ const parser = {
 
     return false
   },
-  grammarCheck (raw) {
+  grammarCheck (raw, mapper) {
     // let commandGroup = raw.trim().split(' ')
     // remove blank chars on both sides
     raw = raw.trim()
     let prinReg = /\/([\w]+)/
-    let principal = raw.match(prinReg)[1]
+    let principalMatch = raw.match(prinReg)
+    let principal = principalMatch[1].trim()
     // get command configuration
-    // parser.configuration = (principal) ? mapper.get(principal) : null
+    parser.configuration = (mapper[principal]) ? mapper[principal]['configuration'] : undefined
     // testcode
-    parser.configuration = {
-      name: 'test',
-      opts: {
-        param1: {
-          name: 'param1',
-          type: 'string',
-          short: '-p1',
-          long: '--param1',
-          require: false
-        },
-        param2: {
-          name: 'param2',
-          type: 'boolean',
-          short: '-p2',
-          long: '--param2',
-          require: true
-        }
-      }
+    // parser.configuration = {
+    //   name: 'test',
+    //   opts: {
+    //     param1: {
+    //       name: 'param1',
+    //       type: 'string',
+    //       short: '-p1',
+    //       long: '--param1',
+    //       require: false
+    //     },
+    //     param2: {
+    //       name: 'param2',
+    //       type: 'boolean',
+    //       short: '-p2',
+    //       long: '--param2',
+    //       require: true
+    //     }
+    //   }
+    // }
+
+    if (parser.configuration === undefined) {
+      throw new CommandParseException(`Command ${principal} not exists`)
     }
     // generate command checker
-    let optList = []
-    Object.keys(parser.configuration.opts).forEach((element, i) => {
-      optList[element] = null
-    })
+    let opts = {}
+    // Object.keys(parser.configuration.opts).forEach((element, i) => {
+    //   opts[element] = null
+    // })
     // parse option
     // if (!parser.configuration) {
     //   throw new CommandParseException(`Command ${principal} is not configured`)
@@ -81,9 +88,9 @@ const parser = {
     //   parser.configuration = null
     //   console.log(`fetching configuration of ${principal}`)
     // }
-    let optStr = raw.slice(principal.length + 1).trim()
+    let optStr = raw.slice(principalMatch[0].length).trim()
     let paramReg = /-{1,2}([\w]+)/
-    let valueReg = /[\w\u4e00-\u9fa5]+/
+    let valueReg = /[\S]+/
     let paramMatch = optStr.match(paramReg)
     let valueMatch = null
     while (paramMatch) {
@@ -94,7 +101,7 @@ const parser = {
       // check whether parameter exists
       let param = parser.checkParam(paramMatch[0])
       if (!param) {
-        throw new CommandParseException(`Parameter ${param} not exists`)
+        throw new CommandParseException(`Parameter ${paramMatch[0]} not exists`)
       }
       let paramType = parser.configuration.opts[param].type
       optStr = optStr.slice(paramMatch[0].length).trim()
@@ -112,7 +119,7 @@ const parser = {
         } catch (e) {
           throw new CommandParseException(`Parameter ${param} value error, cannot convert ${val} to type ${paramType}`)
         }
-        optList[param] = tempVal
+        opts[param] = tempVal
         optStr = optStr.slice(valueMatch[0].length).trim()
       }
       paramMatch = optStr.match(paramReg)
@@ -121,7 +128,7 @@ const parser = {
     // ...
     return {
       name: principal,
-      optList: optList
+      opts: opts
     }
     // parse string
   }
