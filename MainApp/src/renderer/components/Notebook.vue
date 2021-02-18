@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-06 20:56:48
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 17:08:21
+ * @LastEditTime: 2021-02-17 17:07:13
 -->
 <template>
   <el-container>
@@ -62,7 +62,7 @@
                     :stroke-width="10"
                     :show-text="false"
                     :percentage="
-                      getPercentage(item.mastered, item.total)
+                      getPercentage(100, 140)
                     "
                   ></el-progress>
                 </div>

@@ -1,25 +1,34 @@
 /*
  * @Date: 2021-02-15 09:17:01
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-15 13:43:34
+ * @LastEditTime: 2021-02-18 11:21:10
  */
 
-import {parser} from 'parser'
-
-export const cmd = {
-  bind: (command, func) => {
+import parser from './parser'
+const mapper = {}
+const cmdParser = parser
+const command = {
+  bind: (cmd, func) => {
     // todo
-    console.log('test1')
+    console.log('In bind')
+    mapper[cmd] = func
   },
   parse: (raw) => {
-    return parser.parse(raw)
+    return cmdParser.parse(raw)
   },
-  execute: (context, raw) => {
+  execute: (raw) => {
     // todo
     console.log(`try parsing command ${raw}`)
-    this.run(context, this.parse(raw))
+    let commandData = command.parse(raw)
+    console.log(`in commandjs ${commandData}`)
+    let reg = /\/(\w+)/
+    let principal = raw.match(reg)[1]
+    let fn = mapper[principal]
+    fn(commandData)
   },
-  run: (context, func) => {
-    func(context)
+  run: (task) => {
+    task.func(task.opts)
   }
 }
+
+export default command

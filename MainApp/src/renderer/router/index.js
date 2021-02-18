@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 10:32:01
+ * @LastEditTime: 2021-02-17 17:10:09
  */
 
 import Vue from 'vue'
@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Router from 'vue-router'
 import { shortcut } from '../plugins/shortcut'
 import sequelize from '../db/index'
+import command from '../plugins/commandbox/command'
 import {
   Button,
   Select,
@@ -39,6 +40,7 @@ dom.watch()
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.prototype.$shortcut = shortcut
 Vue.prototype.$db = sequelize
+Vue.prototype.$command = command
 window.Vue = Vue
 Vue.use(ButtonGroup)
 Vue.use(Tag)

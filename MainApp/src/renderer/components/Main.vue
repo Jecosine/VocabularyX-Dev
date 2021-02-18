@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 13:17:24
+ * @LastEditTime: 2021-02-18 11:20:52
 -->
 <template>
   <el-container id="main-container">
@@ -12,7 +12,7 @@
       <div id="command-container">
         <div id="command-wrapper" v-show="showCommand">
           <div id="command-box">
-            <el-input id="command-input" ref="searchBarRef" style="fontFamily:'Fira Code'" v-model="command" @keydown.27.native="triggerCommand"></el-input>
+            <el-input id="command-input" ref="searchBarRef" style="fontFamily:'Fira Code'" v-model="command" @keydown.27.native="triggerCommand" @keydown.enter.native="executeCommand"></el-input>
           </div>
         </div>
       </div>
@@ -70,6 +70,7 @@
 
 <script>
 import { setTheme } from '../utils/index'
+
 export default {
   components: {
     titlebar: require('@/components/partial/Titlebar').default
@@ -93,13 +94,18 @@ export default {
       }
     },
     executeCommand () {
-      this.$commandBox.execute(this.command)
+      this.$command.execute(this.command)
+      this.triggerCommand()
     },
     openMenu (name) {
       if (this.currentMenu !== name) {
         this.$router.push({ name: name })
         this.currentMenu = name
       }
+    },
+    testFunction (options) {
+      console.log('It works!')
+      console.log(options)
     }
   },
   mounted () {
@@ -107,7 +113,9 @@ export default {
     this.$shortcut.setScope('all')
     this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
     this.$shortcut.bind('esc', this.triggerCommand)
+    // set default theme
     setTheme(document.body, 'theme-default')
+    this.$command.bind('test', this.testFunction)
   }
 }
 </script>
