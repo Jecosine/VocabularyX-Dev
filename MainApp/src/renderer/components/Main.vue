@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 14:22:46
+ * @LastEditTime: 2021-02-18 14:37:05
 -->
 <template>
   <el-container id="main-container">
@@ -83,31 +83,31 @@ export default {
       currentMenu: 'recent',
       command: '',
       showCommand: false,
-      commandHistory: [],
-      commandHistoryCursor: -1
+      cmdHistory: [],
+      cmdCursor: -1
     }
   },
   methods: {
     prevCommand () {
       // first time
-      if (this.commandHistoryCursor < 0) {
-        this.commandHistory.push(this.command)
-        this.commandHistoryCursor = this.commandHistory.length - 1
+      if (this.cmdCursor < 0) {
+        this.cmdHistory.push(this.command)
+        this.cmdCursor = this.cmdHistory.length - 1
       }
-      if (this.commandHistoryCursor) {
-        --this.commandHistoryCursor
-        this.command = this.commandHistory[this.commandHistoryCursor]
+      if (this.cmdCursor) {
+        --this.cmdCursor
+        this.command = this.cmdHistory[this.cmdCursor]
       }
     },
     nextCommand () {
-      if (this.commandHistoryCursor >= 0 && this.commandHistoryCursor < this.commandHistory.length - 1) {
-        ++this.commandHistoryCursor
-        this.command = this.commandHistory[this.commandHistoryCursor]
+      if (this.cmdCursor >= 0 && this.cmdCursor < this.cmdHistory.length - 1) {
+        ++this.cmdCursor
+        this.command = this.cmdHistory[this.cmdCursor]
       }
       // reach bottom
-      if (this.commandHistoryCursor === this.commandHistory.length - 1) {
-        this.commandHistory.pop(-1)
-        this.commandHistoryCursor = -1
+      if (this.cmdCursor === this.cmdHistory.length - 1) {
+        this.cmdHistory.pop(-1)
+        this.cmdCursor = -1
       }
     },
     triggerCommand () {
@@ -116,16 +116,22 @@ export default {
         this.$nextTick(function () {
           this.command = ''
           this.$refs.searchBarRef.focus()
-          this.commandHistoryCursor = -1
+          this.cmdCursor = -1
+          if (this.cmdHistory[this.cmdHistory.length - 1] === '') {
+            this.cmdHistory.pop(-1)
+          }
         })
       }
     },
     executeCommand () {
       if (this.command.trim() !== '') {
-        this.commandHistory.push(this.command)
+        if (this.cmdHistory[this.cmdHistory.length - 1] === '') {
+          this.cmdHistory.pop(-1)
+        }
+        this.cmdHistory.push(this.command)
       }
-      if (this.commandHistory > 10) {
-        this.commandHistory.shift()
+      if (this.cmdHistory > 10) {
+        this.cmdHistory.shift()
       }
       let res = this.$command.execute(this.command)
       if (res && res['status'] < 0) {
@@ -166,8 +172,9 @@ export default {
   },
   mounted () {
     // const that = this
+    // bind
     this.$shortcut.setScope('all')
-    this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
+    this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)    
     this.$shortcut.bind('esc', this.triggerCommand)
     // set default theme
     setTheme(document.body, 'theme-default')
