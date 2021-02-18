@@ -108,3 +108,19 @@ a.crossreference {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+/* notification */
+.notify-container {
+  border-radius: 0.2rem!important;
+  /* background-color: red!important; */
+}
+.notify-container .el-notification__title {
+  font-size: 0.8rem!important;
+  font-weight: bolder!important;
+}
+.notify-container .el-notification__content {
+  font-size: 0.7rem!important;
+}
+.notify-error {
+
+}

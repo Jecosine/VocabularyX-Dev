@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 14:37:05
+ * @LastEditTime: 2021-02-18 14:54:55
 -->
 <template>
   <el-container id="main-container">
@@ -142,7 +142,8 @@ export default {
             title: title,
             message: res['msg'].message,
             position: 'bottom-right',
-            type: 'error'
+            type: 'error',
+            customClass: 'notify-container'
           })
         }
       }
@@ -174,7 +175,7 @@ export default {
     // const that = this
     // bind
     this.$shortcut.setScope('all')
-    this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)    
+    this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
     this.$shortcut.bind('esc', this.triggerCommand)
     // set default theme
     setTheme(document.body, 'theme-default')
