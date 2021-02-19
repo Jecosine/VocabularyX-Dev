@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 13:32:58
+ * @LastEditTime: 2021-02-19 13:03:33
  */
 
 import Vue from 'vue'
@@ -32,7 +32,9 @@ import {
   Divider,
   Tag,
   ButtonGroup,
-  Notification
+  Notification,
+  Tabs,
+  TabPane
 } from 'element-ui'
 
 library.add(fas, fab, far)
@@ -45,6 +47,8 @@ Vue.prototype.$command = command
 Vue.prototype.$notify = Notification
 window.Vue = Vue
 
+Vue.use(Tabs)
+Vue.use(TabPane)
 Vue.use(ButtonGroup)
 Vue.use(Tag)
 Vue.use(Divider)
@@ -94,6 +98,11 @@ export default new Router({
             id: 2
           },
           component: resolve => { require(['@/components/Word'], resolve) }
+        },
+        {
+          path: '/notebookdetail/:name',
+          name: 'notebookdetail',
+          component: resolve => { require(['@/components/NotebookDetail'], resolve) }
         }
       ]
     }

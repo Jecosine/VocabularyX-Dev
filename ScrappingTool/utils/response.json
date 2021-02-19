@@ -1,0 +1,60 @@
+{
+    "returnPhrase": [
+        "ablaze"
+    ],
+    "query": "ablaze",
+    "errorCode": "0",
+    "l": "en2zh-CHS",
+    "tSpeakUrl": "http://openapi.youdao.com/ttsapi?q=%E9%97%AA%E4%BA%AE&langType=zh-CHS&sign=24F9651846330A6C6CD1BC7FE19C682D&salt=1613644821330&voice=4&format=mp3&appKey=2423360539ba5632&ttsVoiceStrict=false",
+    "web": [
+        {
+            "value": [
+                "着火",
+                "闪耀的",
+                "着水"
+            ],
+            "key": "ablaze"
+        },
+        {
+            "value": [
+                "大肆院"
+            ],
+            "key": "ABLAZE CREW"
+        },
+        {
+            "value": [
+                "你的脊骨燃着",
+                "你的背脊已被点燃",
+                "你的脊骨燃烧"
+            ],
+            "key": "Your spine is ablaze"
+        }
+    ],
+    "requestId": "6929120c-81bc-4038-9fee-984d1644d025",
+    "translation": [
+        "闪亮"
+    ],
+    "dict": {
+        "url": "yddict://m.youdao.com/dict?le=eng&q=ablaze"
+    },
+    "webdict": {
+        "url": "http://m.youdao.com/dict?le=eng&q=ablaze"
+    },
+    "basic": {
+        "exam_type": [
+            "TOEFL",
+            "GRE"
+        ],
+        "us-phonetic": "əˈbleɪz",
+        "phonetic": "əˈbleɪz",
+        "uk-phonetic": "əˈbleɪz",
+        "uk-speech": "http://openapi.youdao.com/ttsapi?q=ablaze&langType=en&sign=EF694E34CEE7EE7D5BE7A7B3E93B7B73&salt=1613644821330&voice=5&format=mp3&appKey=2423360539ba5632&ttsVoiceStrict=false",
+        "explains": [
+            "adj. 着火的，猛火燃烧；闪耀的，光亮的；激昂的，愤怒的",
+            "adv. 着火；闪耀"
+        ],
+        "us-speech": "http://openapi.youdao.com/ttsapi?q=ablaze&langType=en&sign=EF694E34CEE7EE7D5BE7A7B3E93B7B73&salt=1613644821330&voice=6&format=mp3&appKey=2423360539ba5632&ttsVoiceStrict=false"
+    },
+    "isWord": true,
+    "speakUrl": "http://openapi.youdao.com/ttsapi?q=ablaze&langType=en&sign=EF694E34CEE7EE7D5BE7A7B3E93B7B73&salt=1613644821330&voice=4&format=mp3&appKey=2423360539ba5632&ttsVoiceStrict=false"
+}
