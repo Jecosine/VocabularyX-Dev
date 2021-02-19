@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 14:54:55
+ * @LastEditTime: 2021-02-20 02:07:13
 -->
 <template>
   <el-container id="main-container">
@@ -88,6 +88,11 @@ export default {
     }
   },
   methods: {
+    closeCommand () {
+      if (this.showCommand) {
+        this.showCommand = false
+      }
+    },
     prevCommand () {
       // first time
       if (this.cmdCursor < 0) {
@@ -174,7 +179,8 @@ export default {
   mounted () {
     // const that = this
     // bind
-    this.$shortcut.setScope('all')
+    this.$shortcut.filter = function (event) { return true }
+    this.$shortcut.setScope('input')
     this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
     this.$shortcut.bind('esc', this.triggerCommand)
     // set default theme

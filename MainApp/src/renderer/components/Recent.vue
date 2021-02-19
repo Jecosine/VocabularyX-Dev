@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-10 15:06:46
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-14 02:51:43
+ * @LastEditTime: 2021-02-20 02:12:13
 -->
 <template>
   <el-container>
@@ -11,8 +11,10 @@
       </div> -->
       <div id="search-container">
         <div id="search-wrapper">        
-          <el-input v-model="searchText" size="large" id="main-search-bar">
-            <el-button slot="append" icon="el-icon-search" type="primary"></el-button>
+          <el-input ref="search" v-model="searchText" size="large" id="main-search-bar" @keydown.esc.native="unfocus()">
+            <template slot="append">
+              <el-button icon="el-icon-search" id="search-button" type="primary"></el-button>
+            </template>            
           </el-input>
         </div>
       </div>
@@ -157,7 +159,11 @@ export default {
     }
   },
   methods: {
-
+    unfocus () {
+      if (this.$refs['search'].focused) {
+        this.$refs['search'].blur()
+      }
+    },
     getPercentage (a, b) {
       return b === 0 ? 0 : (a / b).toFixed(2) * 100
     },
@@ -280,5 +286,16 @@ export default {
 .link-item > a {
   text-decoration: none;
   color: var(--color-primary)!important;
+}
+#search-wrapper >>> .el-input-group__append,
+#search-button {
+  background-color: var(--color-primary-secondary);
+  color: white;
+  border-radius: 0;
+  border-width: 0.2rem;
+  border-color: var(--color-primary-secondary);
+}
+#main-search-bar {
+  box-sizing: content-box;
 }
 </style>
