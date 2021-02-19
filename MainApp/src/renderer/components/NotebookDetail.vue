@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-15 13:52:55
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-19 16:16:50
+ * @LastEditTime: 2021-02-20 01:39:01
 -->
 <template>
   <el-container>
@@ -19,13 +19,14 @@
         </div>
         <div class="statistic-container">
           <el-tabs>
-            <el-tab-pane class="overview-container">
+            <el-tab-pane class="overview-container" label="Overview">
               <!-- overview components -->
+              <overview :data="[]" />
             </el-tab-pane>
-            <el-tab-pane class="recent-week">
+            <el-tab-pane class="recent-week" label="Weekly">
               <!-- recent data in a week (time and word count) -->
             </el-tab-pane>
-            <el-tab-pane class="recent-month">
+            <el-tab-pane class="recent-month" label="Monthly">
               <!-- recent data in a month (time and word count) -->
             </el-tab-pane>
           </el-tabs>
@@ -38,9 +39,11 @@
 
 <script>
 import ListView from './partial/ListView'
+import Overview from './partial/Overview'
 export default {
   components: {
-    'list-view': ListView
+    'list-view': ListView,
+    'overview': Overview
   },
   data () {
     return {
@@ -98,7 +101,9 @@ export default {
   min-height: 30rem;
   background-color: #f7f7f7;
   box-sizing: content-box;
+  overflow-x: scroll;
   padding: 1rem;
+  margin: 1rem 0;
 }
 .toolbar {
   width: 100%;
@@ -111,5 +116,8 @@ export default {
 }
 .statistic-container >>> .test-value-class {
   font-size: 1rem;
+}
+.overview-container {
+  overflow-x: scroll;
 }
 </style>

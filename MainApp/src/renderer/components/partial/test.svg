@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10,10)">
+    <g transform="translate(0,0)">
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="0" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="14" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="28" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="42" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="56" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="70" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="84" />
+    </g>
+    <g transform="translate(14,0)">
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="0" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="14" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="28" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="42" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="56" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="70" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="84" />
+    </g>
+    <g transform="translate(28,0)">
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="0" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="14" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="28" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="42" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="56" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="70" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="84" />
+    </g>
+    <g transform="translate(42,0)">
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="0" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="14" />
+      <rect width="10" height="10" fill="rgba(60,121,175,0.637)" rx="2" ry="2" x="0" y="28" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="42" />
+      <rect width="10" height="10" fill="rgba(60,121,175,0.514)" rx="2" ry="2" x="0" y="56" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="70" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="84" />
+    </g>
+    <g transform="translate(56,0)">
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="0" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="14" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="28" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="42" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="56" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="70" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="84" />
+    </g>
+    <g transform="translate(70,0)">
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="0" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="14" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="28" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="42" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="56" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="70" />
+      <rect width="10" height="10" fill="#3c79af" rx="2" ry="2" x="0" y="84" />
+    </g>
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-19 13:03:33
+ * @LastEditTime: 2021-02-20 01:20:36
  */
 
 import Vue from 'vue'
@@ -34,7 +34,8 @@ import {
   ButtonGroup,
   Notification,
   Tabs,
-  TabPane
+  TabPane,
+  Tooltip
 } from 'element-ui'
 
 library.add(fas, fab, far)
@@ -47,6 +48,7 @@ Vue.prototype.$command = command
 Vue.prototype.$notify = Notification
 window.Vue = Vue
 
+Vue.use(Tooltip)
 Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(ButtonGroup)
