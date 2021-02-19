@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-06 20:56:48
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-17 17:07:13
+ * @LastEditTime: 2021-02-20 02:52:55
 -->
 <template>
   <el-container>
@@ -28,7 +28,8 @@
       </div>
     </el-header>
     <el-main id="notebook-main-container">
-      <div
+      <div id="main-wrapper">
+        <div
         id="notebook-list-container"
         :class="{
           'notebook-list-container-list': isListView,
@@ -69,6 +70,7 @@
               </el-col>
             </el-row>
         </div>
+        </div>
       </div>
     </el-main>
   </el-container>
@@ -100,11 +102,10 @@ export default {
   async created () {
     // get notebook data
     window.routerApp = this
-    this.notebookData = await this.$db.models.Notebook.findAll({
-      attributes: ['*']
-    })
+    this.notebookData = await this.$db.models.Notebook.findAll({attributes: ['id', 'name']})
     this.$nextTick(() => {
       console.log(this.notebookData)
+      this.notebookData = JSON.parse(JSON.stringify(this.notebookData))
     })
   }
 }
@@ -119,6 +120,9 @@ export default {
 #notebook-main-container {
   height: calc(100vh - 2.4rem - 2.25rem - 2.125rem);
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .notebook-toolbar-container {
   width: 100%;
@@ -151,7 +155,7 @@ export default {
   background-color: aliceblue;
   width: 100%;
   height: 5rem;
-  margin: 0.1rem;
+  margin: 0.2rem;
 }
 .notebook-item-container-grid {
   background-color: aliceblue;
@@ -172,5 +176,11 @@ export default {
   align-items: center;
   line-height: 100%;
   /* background-color: aqua; */
+}
+#main-wrapper {
+  box-sizing: content-box;
+  width: 70%;
+  max-width: 60rem;
+  padding: 2rem;
 }
 </style>
