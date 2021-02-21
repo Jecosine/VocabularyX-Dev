@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-03 07:02:08
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-20 02:07:13
+ * @LastEditTime: 2021-02-21 13:08:22
 -->
 <template>
   <el-container id="main-container">
@@ -12,7 +12,16 @@
       <div id="command-container">
         <div id="command-wrapper" v-show="showCommand">
           <div id="command-box">
-            <el-input id="command-input" ref="searchBarRef" style="fontFamily:'Fira Code'" v-model="command" @keydown.27.native="triggerCommand" @keydown.enter.native="executeCommand" @keydown.up.native="prevCommand" @keydown.down.native="nextCommand"></el-input>
+            <el-input
+              id="command-input"
+              ref="searchBarRef"
+              style="fontFamily:'Fira Code'"
+              v-model="command"
+              @keydown.27.native="triggerCommand"
+              @keydown.enter.native="executeCommand"
+              @keydown.up.native="prevCommand"
+              @keydown.down.native="nextCommand"
+            ></el-input>
           </div>
         </div>
       </div>
@@ -141,7 +150,7 @@ export default {
       let res = this.$command.execute(this.command)
       if (res && res['status'] < 0) {
         let title
-        if (res['msg'] && (res['msg'] instanceof Error)) {
+        if (res['msg'] && res['msg'] instanceof Error) {
           title = `[${res['msg'].scope}] ${res['msg'].name}`
           this.$notify({
             title: title,
@@ -153,6 +162,15 @@ export default {
         }
       }
       this.triggerCommand()
+    },
+    popup (type, title, msg) {
+      this.$notify({
+        title: title,
+        message: msg,
+        position: 'bottom-right',
+        type: type,
+        customClass: 'notify-container'
+      })
     },
     openMenu (name) {
       if (this.currentMenu !== name) {
@@ -167,24 +185,77 @@ export default {
     routerCommand (options) {
       // record current path
       let current = this.$route
+
       // check options
-      if (!options['opts'] && (options['opts']['path'] === undefined)) {
+      if (!options['opts'] && options['opts']['path'] === undefined) {
         throw new CommandExecuteException(`'path' param not defined`)
       }
       if (current.path !== options['opts']['path']) {
         this.$router.push(options['opts']['path'])
+      }
+    },
+    openNotebook (options) {},
+    async openWord (options) {
+      if (!options['opts']['word']) {
+        this.popup(
+          'error',
+          `[Word] Word is NOT Provided`,
+          `Word parameter is not provided in command`
+        )
+      }
+      let wordText = options['opts']['word']
+      if (this.word === wordText) {
+        this.popup(
+          'warning',
+          `[Word] Already Opened`,
+          `You are already at word ${wordText}`
+        )
+      }
+      // todo check whether in database
+      let check = await this.$db.models.Word.findOne({
+        where: {
+          spell: wordText
+        },
+        attributes: ['id']
+      })
+      console.log(check)
+      if (check === null) {
+        this.popup(
+          'warning',
+          `[Word] Word Not Found`,
+          `Word ${wordText} is not in database`
+        )
+      } else {
+        this.$router.push(`/word/${wordText}`)
       }
     }
   },
   mounted () {
     // const that = this
     // bind
-    this.$shortcut.filter = function (event) { return true }
+    this.$shortcut.filter = function (event) {
+      return true
+    }
     this.$shortcut.setScope('input')
     this.$shortcut.bind('ctrl+shift+p', this.triggerCommand)
     this.$shortcut.bind('esc', this.triggerCommand)
     // set default theme
     setTheme(document.body, 'theme-default')
+    let that = this
+
+    this.$router.beforeEach((to, from, next) => {
+      if (to.matched.length !== 0) {
+        next()
+      } else {
+        that.$notify({
+          title: '[Command] Route Command Error',
+          message: `No such route: ${to.path}`,
+          type: 'error',
+          customClass: 'notify-container',
+          position: 'bottom-right'
+        })
+      }
+    })
     this.$command.bind('test', this.testFunction, {
       name: 'test',
       opts: {
@@ -216,6 +287,30 @@ export default {
         }
       }
     })
+    this.$command.bind('open', this.openNotebook, {
+      name: 'open',
+      opts: {
+        name: {
+          name: 'name',
+          type: 'string',
+          short: '-n',
+          long: '--name',
+          require: true
+        }
+      }
+    })
+    this.$command.bind('word', this.openWord, {
+      name: 'word',
+      opts: {
+        word: {
+          name: 'word',
+          type: 'string',
+          short: '-w',
+          long: '--word',
+          require: true
+        }
+      }
+    })
   },
   created () {
     window.routeApp = this
@@ -242,7 +337,7 @@ export default {
 #side-container {
   /* height: calc(100vh - 2rem); */
   background-color: var(--color-primary);
-  position:relative;
+  position: relative;
 }
 #content-main {
   padding: 0;
@@ -265,7 +360,7 @@ export default {
   width: 33%;
   height: 3.2rem;
   background-color: #e7e7e7;
-  box-shadow: 0 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.16);
+  box-shadow: 0 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.16);
   line-height: 100%;
   z-index: 9999;
 }
@@ -281,7 +376,7 @@ export default {
 }
 .navigation-wrapper {
   width: calc(100% - 2.25rem);
-  padding: 0 1.125rem;  
+  padding: 0 1.125rem;
 }
 #footer-container {
   background-color: #e7e7e7;

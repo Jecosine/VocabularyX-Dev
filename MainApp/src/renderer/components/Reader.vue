@@ -1,16 +1,21 @@
 <!--
  * @Date: 2021-02-20 18:27:52
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-20 18:36:09
+ * @LastEditTime: 2021-02-20 18:44:28
 -->
 <template>
   <el-container id="reader-container">
     <el-main id="reader-main">
       <Word word="currentWord"/>
+      <div id="unfold-button"></div>
+      <div id="reader-aside" v-show="unfold">
+        <font-awesome-icon :icon="['fas',unfold ? 'arrow-right' : 'arrow-right']"></font-awesome-icon>
+      </div>
+      <!-- catalog -->
+
+    </div>
     </el-main>
-    <el-aside id="reader-aside">
-      
-    </el-aside>
+    
   </el-container>
 </template>
 
@@ -18,7 +23,8 @@
 export default {
   data () {
     return {
-      currentWord: ''
+      currentWord: '',
+      unfold: true
     }
   },
   methods: {},
@@ -45,7 +51,14 @@ export default {
   margin: 0;
 
 }
+#unfold-button {
+  width: 0.5rem;
+  height: 5rem;
+
+}
 #reader-aside {
+  width: 10rem;
+  height: 100%;
   background-color: beige;
 }
 </style>

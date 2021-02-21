@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-06 20:56:48
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-20 02:52:55
+ * @LastEditTime: 2021-02-20 20:31:00
 -->
 <template>
   <el-container>
@@ -49,7 +49,8 @@
           <el-row :gutter="20">
               <el-col :span="14">
                 <div class="notebook-item-title">
-                  {{ item.name }}
+                  <font-awesome-icon :icon="['fas', 'book']"></font-awesome-icon> 
+                  <div class="text-container">{{ item.name }}</div>
                 </div>
               </el-col>
               <el-col :span="10">
@@ -151,10 +152,22 @@ export default {
   border-radius: 0.1rem;
   /* box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.1); */
 }
+.notebook-item-container-list  >>> .el-col {
+  height: 100%;
+}
+.notebook-item-container-list  >>> .el-row {
+  width: 100%;
+  height: 100%;
+}
 .notebook-item-container-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
   background-color: aliceblue;
   width: 100%;
   height: 5rem;
+  padding: 1rem;
   margin: 0.2rem;
 }
 .notebook-item-container-grid {
@@ -162,10 +175,18 @@ export default {
   width: 9rem;
 }
 .notebook-item-content {
-  height: 4rem;
+  height: 5rem;
 }
-.notebook-item-title{
-  height: 4rem;
+.notebook-item-title {
+  height: 3rem;
+  line-height: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.notebook-item-title .text-container {
+  margin-left: 1rem;
+  color: var(--color-primary);
 }
 .toolbar-wrapper {
   float: right;
