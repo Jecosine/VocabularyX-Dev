@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-15 13:53:45
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 09:35:12
+ * @LastEditTime: 2021-02-20 18:24:40
  */
 const path = require('path')
 const { Sequelize } = require('sequelize')
@@ -11,7 +11,7 @@ const { UserModel, NotebookModel, WordModel } = require('../models')
 const sequelize = new Sequelize(undefined, undefined, undefined, {
   host: 'localhost',
   dialect: 'sqlite',
-  storage: path.join(__dirname, './test.db')
+  storage: (process.env.NODE_ENV === 'development') ? path.join(process.cwd(), './customData/test.db') : path.join(process.cwd(), './resources/customData/test.db')
 })
 console.log(`in db.js, dirname: ${__dirname}`)
 // const User = sequelize.define('User', UserModel, {

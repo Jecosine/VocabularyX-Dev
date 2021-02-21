@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-15 14:19:19
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 09:42:06
+ * @LastEditTime: 2021-02-20 20:55:46
  */
 const {DataTypes} = require('sequelize')
 
@@ -13,8 +13,12 @@ const WordModel = {
   spell: DataTypes.TEXT,
   phonetic: DataTypes.TEXT,
   tip: DataTypes.TEXT,
-  cn_source: DataTypes.TEXT,
-  en_source: DataTypes.TEXT,
+  cn_etym: DataTypes.TEXT,
+  en_etym: DataTypes.TEXT,
+  word_forms: DataTypes.TEXT,
+  audio_sources: DataTypes.TEXT,
+  raw: DataTypes.TEXT,
+  parsed: DataTypes.INTEGER,
   notebookId: DataTypes.TEXT
 }
 
