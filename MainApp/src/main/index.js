@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-16 10:17:04
+ * @LastEditTime: 2021-02-20 20:34:58
  */
 'use strict'
 
@@ -37,8 +37,8 @@ function createWindow () {
 
   mainWindow.loadURL(winURL)
 
-  ipcMain.on('closed', () => {
-    mainWindow = null
+  ipcMain.on('close', () => {
+    mainWindow.close()
   })
 
   ipcMain.on('min', (e) => {
