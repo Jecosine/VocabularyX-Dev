@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-15 09:17:01
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-18 12:30:11
+ * @LastEditTime: 2021-02-21 13:06:36
  */
 
 import exceptions from '../../exceptions'
@@ -20,7 +20,7 @@ const command = {
   parse: (raw) => {
     return cmdParser.parse(raw, mapper)
   },
-  execute: (raw) => {
+  execute: async (raw) => {
     // todo
     console.log(`try parsing command ${raw}`)
     let commandData
@@ -36,7 +36,11 @@ const command = {
     let principal = commandData.name
     let fn = mapper[principal].function
     try {
-      fn(commandData)
+      if (fn instanceof (async () => {}).constructor) {
+        await fn(commandData)
+      } else {
+        fn(commandData)
+      }
     } catch (e) {
       return {
         status: -2,
