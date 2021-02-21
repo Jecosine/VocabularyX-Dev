@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-02-20 18:27:52
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-20 18:44:28
+ * @LastEditTime: 2021-02-21 16:54:42
 -->
 <template>
   <el-container id="reader-container">
@@ -12,8 +12,8 @@
         <font-awesome-icon :icon="['fas',unfold ? 'arrow-right' : 'arrow-right']"></font-awesome-icon>
       </div>
       <!-- catalog -->
+      
 
-    </div>
     </el-main>
     
   </el-container>
