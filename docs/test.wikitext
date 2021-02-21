@@ -1,5 +1,0 @@
-__INDEX__
-
-== Title ==
-
-''' Bold Text ''' [http://outer.link Test link] [[inner link]]

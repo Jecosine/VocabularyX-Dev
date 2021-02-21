@@ -20,7 +20,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "mainapp",
+    "productName": "VocabularyX",
     "appId": "com.jecosine.vocabularyx",
     "directories": {
       "output": "build"
@@ -28,6 +28,11 @@
     "files": [
       "dist/electron/**/*"
     ],
+    "asar": false,
+    "extraResources": {
+      "from": "./customData",
+      "to": "customData"
+    },
     "dmg": {
       "contents": [
         {

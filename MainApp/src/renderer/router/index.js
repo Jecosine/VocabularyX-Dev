@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-02-03 06:34:40
  * @LastEditors: Jecosine
- * @LastEditTime: 2021-02-20 01:20:36
+ * @LastEditTime: 2021-02-21 11:49:13
  */
 
 import Vue from 'vue'
@@ -94,8 +94,9 @@ export default new Router({
           component: resolve => { require(['@/components/Notebook'], resolve) }
         },
         {
-          path: '/word',
+          path: '/word/:word',
           name: 'word',
+          props: true,
           meta: {
             id: 2
           },
