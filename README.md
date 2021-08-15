@@ -1,6 +1,6 @@
 # VocabularyX
 
-VacabularyX is a simple software to memorize word, providing features:
+VocabularyX is a simple software to memorize word, providing features:
 
 ## Words Management
 
